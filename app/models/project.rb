@@ -13,7 +13,7 @@ class Project < ActiveRecord::Base
   def create_card
   	self.cards.create(
   		title: "Your first card. Woohoo!", 
-  		body:"Click here to edit this card's contents.",
+  		body:"Click here to edit this card's contents. Hover over the top right of a card and click the 'X' to delete it. Drag cards to the desired position.",
       position: 1)
   end
 
