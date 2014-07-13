@@ -18,7 +18,7 @@
 	<%= link_to 'new project', projects_path(project: {title: "Click Here to Edit"}), {method: :post, class: "button"}  %>
 	<% end %>
 </nav>
-<h1>Hello <%= current_user.name %></h1>
+<h1><%= current_user.name %></h1>
 <% else %>
 <nav><%= link_to "sign in", new_user_session_path %> | <%= link_to 'sign up', new_user_registration_path %></nav>
 <h1>Harris</h1>
