@@ -1,0 +1,6 @@
+<% if notice %><p id="notice"><%= notice %></p><% end %>
+<div id="board" class="board" data-update-url="<%= sort_project_cards_path @project %>">
+	<% @cards.each do |card| %>
+		<%= render partial: "projects/card", object: card %>
+	<% end %>
+</div>

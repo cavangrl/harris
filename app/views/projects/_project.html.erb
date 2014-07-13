@@ -1,0 +1,5 @@
+<%= content_tag_for :div, project do %>
+<h2><%= best_in_place project, :title %></h2>
+ <%= link_to 'delete', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %> |
+  <%= link_to 'show', project, class: "button" %>
+<% end %>
