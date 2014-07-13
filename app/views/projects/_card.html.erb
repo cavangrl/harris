@@ -1,7 +1,13 @@
 <%= content_tag_for :div, card do %>
 	<div class="header">
+	<% if current_user == @project.user %>		
 	<div class="nav"><%= link_to "X", project_card_path(@project, card), method: :delete, remote: true %></div>
-	<h3><%= best_in_place card, :title, path: project_card_path(@project, card) %></h3>
-	</div>
-	<p><%= best_in_place card, :body, path: project_card_path(@project, card), type: :textarea %></p>
+		<h3><%= best_in_place card, :title, path: project_card_path(@project, card) %></h3>
+		</div>
+		<p><%= best_in_place card, :body, path: project_card_path(@project, card), type: :textarea %></p>
+	<% else %>
+		<h3><%= card.title %></h3>
+		</div>
+		<p><%= card.body %></p>
+	<% end %>
 <% end %>

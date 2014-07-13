@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
   resources :projects do
-    resources :cards do
+    resources :cards, except: [:index, :show] do
     	collection {post :sort}
 	end
   end

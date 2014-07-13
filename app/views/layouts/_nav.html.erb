@@ -1,10 +1,16 @@
 <% if @project and current_user %>
 <nav>
 <%= link_to "sign out", destroy_user_session_path, :method => :delete %> | 
-<%= link_to 'projects', projects_path %> | 
+<%= link_to 'projects', projects_path %>
+<% if current_user == @project.user %> | 
 <%= link_to 'add card', project_cards_path(project_id: @project, card: {title: "???", body: "Something brillinat here..."}), {method: :post, remote: :true, class: "button"} %>
+<% end %>
 </nav>
-<h1><%= best_in_place @project, :title %></h1>
+<% if current_user == @project.user %>
+	<h1><%= best_in_place @project, :title %></h1>
+<% else %>
+	<%= content_tag :h1, @project.title %>
+<% end %>
 <% elsif current_user %>
 <nav>	
 	<%= link_to "sign out", destroy_user_session_path, :method => :delete %>

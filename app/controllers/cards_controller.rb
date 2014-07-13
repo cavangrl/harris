@@ -1,13 +1,7 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:show, :edit, :update, :destroy]
+  before_action :set_card, only: [:edit, :update, :destroy]
   before_action :set_project, only: [:index, :show, :new, :create, :update]
-
-  def index
-    @cards = Card.all
-  end
-
-  def show
-  end
+  before_action :authenticate_user!
 
   def new
     @card = Card.new
