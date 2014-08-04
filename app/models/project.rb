@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
   has_many :cards, -> { order("position ASC") }, dependent: :destroy
   after_create :create_card
   after_initialize :set_status
+ 
 
   STATUS = ["active", "inactive"]
 

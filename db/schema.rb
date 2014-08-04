@@ -11,20 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713162442) do
+ActiveRecord::Schema.define(version: 20140715175801) do
 
   create_table "cards", force: true do |t|
     t.string   "title"
     t.text     "body"
     t.integer  "position"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "project_id"
   end
 
   add_index "cards", ["project_id"], name: "index_cards_on_project_id"
-  add_index "cards", ["user_id"], name: "index_cards_on_user_id"
+
+  create_table "models", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "models", ["email"], name: "index_models_on_email", unique: true
+  add_index "models", ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true
 
   create_table "projects", force: true do |t|
     t.integer  "user_id"
